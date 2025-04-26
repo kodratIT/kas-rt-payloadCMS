@@ -1,5 +1,5 @@
 import { CollectionConfig } from 'payload';
-import GenerateReportButton from '../components/GenerateReportButton'; // Import komponen tombol
+// import GenerateReportButton from '../components/GenerateReportButton'; // Import komponen tombol
 
 export interface LaporanDetail {
     resident: string; // ID resident
@@ -37,43 +37,43 @@ const Laporans: CollectionConfig = {
     {
       name: 'month',
       type: 'number',
-    //   required: false,
+      required: false,
     },
     {
       name: 'year',
       type: 'number',
-    //   required: false,
+      required: false,
     },      
     {
       name: 'saldoBulanSebelumnya',
       type: 'number',
-    //   required: false,
+      required: false,
       defaultValue: 0,
     },
     {
       name: 'totalResidents',
       type: 'number',
-    //   required: false,
+      required: false,
     },
     {
       name: 'completedPayments',
       type: 'number',
-    //   required: false,
+      required: false,
     },
     {
       name: 'processingPayments',
       type: 'number',
-    //   required: false,
+      required: false,
     },
     {
       name: 'pendingPayments',
       type: 'number',
-    //   required: false,
+      required: false,
     },
     {
       name: 'totalAmount',
       type: 'number',
-    //   required: false,
+      required: false,
     },
     {
       name: 'details',
@@ -139,17 +139,17 @@ const Laporans: CollectionConfig = {
             previousYear = year - 1;
           }
       
-          let saldoBulanSebelumnya = 0;
-          const lastLaporan = await payload.find({
-            collection: 'laporans',
-            limit: 1,
-            where: {
-              and: [
-                { month: { equals: previousMonth } },
-                { year: { equals: previousYear } },
-              ],
-            },
-          });
+        //   let saldoBulanSebelumnya = 0;
+        //   const lastLaporan = await payload.find({
+        //     collection: 'laporans',
+        //     limit: 1,
+        //     where: {
+        //       and: [
+        //         { month: { equals: previousMonth } },
+        //         { year: { equals: previousYear } },
+        //       ],
+        //     },
+        //   });
       
         //   if (lastLaporan.totalDocs > 0) {
         //     saldoBulanSebelumnya = lastLaporan.docs[0].totalAmount;
@@ -216,7 +216,6 @@ const Laporans: CollectionConfig = {
                 data: {
                 month,
                 year,
-                saldoBulanSebelumnya,
                 totalResidents: payments.totalDocs,
                 completedPayments,
                 processingPayments,
@@ -227,7 +226,7 @@ const Laporans: CollectionConfig = {
             });
   
       
-        //   console.log(`Created report for month=${month}, year=${year}, laporanID=${laporan.id}`);
+          console.log(`Created report for month=${month}, year=${year}, laporanID=${laporan.id}`);
       
           return Response.json({
             message: 'Laporan berhasil dibuat',
